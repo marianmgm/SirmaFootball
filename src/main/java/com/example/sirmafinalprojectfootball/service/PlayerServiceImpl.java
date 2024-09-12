@@ -1,14 +1,20 @@
 package com.example.sirmafinalprojectfootball.service;
 
+import com.example.sirmafinalprojectfootball.models.Pair;
 import com.example.sirmafinalprojectfootball.models.Player;
+import com.example.sirmafinalprojectfootball.models.Record;
 import com.example.sirmafinalprojectfootball.models.Team;
 import com.example.sirmafinalprojectfootball.repository.PlayerRepository;
+import com.example.sirmafinalprojectfootball.repository.RecordRepository;
 import com.example.sirmafinalprojectfootball.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class PlayerServiceImpl implements PlayerService {
@@ -17,10 +23,13 @@ public class PlayerServiceImpl implements PlayerService {
 
     private final TeamRepository teamRepository;
 
+    private final RecordRepository recordRepository;
+
     @Autowired
-    public PlayerServiceImpl(PlayerRepository playerRepository, TeamRepository teamRepository) {
+    public PlayerServiceImpl(PlayerRepository playerRepository, TeamRepository teamRepository, RecordRepository recordRepository) {
         this.playerRepository = playerRepository;
         this.teamRepository = teamRepository;
+        this.recordRepository = recordRepository;
     }
 
     @Override
