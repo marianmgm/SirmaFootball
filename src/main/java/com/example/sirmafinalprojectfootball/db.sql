@@ -1,3 +1,11 @@
+create table pair_all_matches_map
+(
+    pair_all_matches_id int not null,
+    map_key             int not null,
+    value               int null,
+    primary key (pair_all_matches_id, map_key)
+);
+
 create table teams
 (
     team_id           int         not null
@@ -43,10 +51,21 @@ create table pairs
     playerA_id int not null,
     playerB_id int not null,
     total_time int null,
+    matches_id int not null,
     constraint pair_players_player_id_fk
         foreign key (playerA_id) references players (player_id),
     constraint pair_players_player_id_fk2
         foreign key (playerB_id) references players (player_id)
+);
+
+create table pair_all_matches
+(
+    id         int auto_increment
+        primary key,
+    pair_id    int null,
+    total_time int not null,
+    constraint pair_all_matches_pairs_pair_id_fk
+        foreign key (pair_id) references pairs (pair_id)
 );
 
 create table pair_integer_map

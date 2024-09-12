@@ -31,6 +31,9 @@ public class Pair {
     @Column(name = "total_time")
     private int totalTime;
 
+    @Column(name = "matches_id")
+    private int matchesId;
+
 
 
 
